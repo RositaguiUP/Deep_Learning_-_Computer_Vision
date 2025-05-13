@@ -13,7 +13,7 @@ def resizeImages(original_folder, resized_folder, target_size=(128, 128)):
 
 def predictImages(input_folder, resized_folder, predicted_folder, version, target_size=(128, 128)):
     # Load the trained model
-    model_save_path = f"encoder_decoder_model_{version}.h5" 
+    model_save_path = f"models/encoder_decoder_model_{version}.h5" 
     model = load_model(model_save_path, custom_objects={'mse': MeanSquaredError()})
     model.summary()
 

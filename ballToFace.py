@@ -55,14 +55,6 @@ def load_dataset(face_folder, sphere_folder, augment=True, num_augmented=5):
     return train_test_split(full_faces, full_spheres, test_size=0.2, random_state=42)
 
 
-# def load_dataset(face_folder, sphere_folder):
-#     face_images_original = load_images_from_folder(face_folder)
-#     face_images_augmented = augment_dataset(face_images_original, num_augmented=2)
-#     face_images_all = np.concatenate([face_images_original, face_images_augmented])
-#     sphere_images = load_images_from_folder(sphere_folder)
-#     return train_test_split(face_images_all, sphere_images, test_size=0.2, random_state=42)
-
-
 def build_encoder_decoder(input_shape=(128, 128, 3)):
     inputs = layers.Input(shape=input_shape)
     
@@ -132,14 +124,14 @@ def train_model(model, train_images, train_labels, val_images, val_labels, epoch
 trained_model, history = train_model(model, train_images, train_labels, val_images, val_labels)
 
 # Save the trained model
-model_save_path = "encoder_decoder_model_v5_aum5.h5"
+version = "v5_aum5"
+
+model_save_path = f"models/encoder_decoder_model_{version}.h5" 
 trained_model.save(model_save_path)
 print(f"Model saved to {model_save_path}")
 
 test_loss = trained_model.evaluate(val_images, val_labels)
 print(f"Validation Loss: {test_loss:.4f}")
-
-
 
 
 train_loss = history.history['loss']
