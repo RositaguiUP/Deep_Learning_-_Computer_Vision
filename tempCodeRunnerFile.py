@@ -1,6 +1,6 @@
 import os
 from tensorflow.keras.models import load_model
-from tensorflow.keras.losses import MeanAbsoluteError, MeanSquaredError
+from tensorflow.keras.losses import MeanSquaredError
 import numpy as np
 import cv2
 
@@ -15,7 +15,6 @@ def predictImages(input_folder, resized_folder, predicted_folder, version, targe
     # Load the trained model
     model_save_path = f"models/encoder_decoder_model_{version}.h5" 
     model = load_model(model_save_path, custom_objects={'mse': MeanSquaredError()})
-    # model = load_model(model_save_path, custom_objects={'mae': MeanAbsoluteError()})
     model.summary()
 
     for filename in os.listdir(input_folder):
@@ -36,7 +35,7 @@ input_folder = 'images/predictions/input'
 resized_folder = 'images/predictions/resized_input256'
 predicted_folder = 'images/predictions/predicted'
 
-version = "v6_aum5_2"
+version = "v6"
 
 predictImages(input_folder, resized_folder, predicted_folder, version)
 
