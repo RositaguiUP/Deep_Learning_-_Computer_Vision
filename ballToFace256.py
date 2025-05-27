@@ -125,7 +125,7 @@ def train_model(model, train_images, train_labels, val_images, val_labels, epoch
 trained_model, history = train_model(model, train_images, train_labels, val_images, val_labels)
 
 # Save the trained model
-version = "v6_aum5_2"
+version = "v6_aum5"
 
 model_save_path = f"models/encoder_decoder_model_{version}.h5" 
 trained_model.save(model_save_path)

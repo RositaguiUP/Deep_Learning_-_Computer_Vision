@@ -36,7 +36,7 @@ input_folder = 'images/predictions/input'
 resized_folder = 'images/predictions/resized_input256'
 predicted_folder = 'images/predictions/predicted'
 
-version = "v6_aum5_2"
+version = "v6_aum5"
 
 predictImages(input_folder, resized_folder, predicted_folder, version)
 
